@@ -17,4 +17,5 @@
     <Button fx:id="btnCasas" text="Gestionar casas" onAction="#onCasas"/>
     <Button fx:id="btnMinisterios" text="Gestionar ministerios" onAction="#onMinisterios"/>
     <Button fx:id="btnRoles" text="Asignar roles" onAction="#onRoles"/>
+    <Button fx:id="btnAcademias" text="Gestionar academias" onAction="#onAcademias"/>
 </VBox>
