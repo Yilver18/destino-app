@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.destino.app.view.AsistenciaController"
+            prefWidth="860" prefHeight="520">
+
+    <top>
+        <VBox spacing="8">
+            <padding><Insets top="12" left="12" right="12" bottom="8"/></padding>
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <Button text="← Volver" onAction="#onVolver"/>
+                <Label text="Registro de asistencia" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+            </HBox>
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <Label text="Sesión:"/>
+                <ComboBox fx:id="comboSesion" prefWidth="360"/>
+                <Label fx:id="etiquetaConteo"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <TableView fx:id="tablaAsistencia">
+            <columns>
+                <TableColumn fx:id="colPersona" text="Persona" prefWidth="240"/>
+                <TableColumn fx:id="colMetodo" text="Método" prefWidth="100"/>
+                <TableColumn fx:id="colHora" text="Hora" prefWidth="140"/>
+            </columns>
+            <BorderPane.margin><Insets left="12" bottom="12"/></BorderPane.margin>
+        </TableView>
+    </center>
+
+    <right>
+        <VBox spacing="8" prefWidth="240">
+            <padding><Insets top="0" right="12" bottom="12" left="12"/></padding>
+            <Label text="Marcar presente" style="-fx-font-weight: bold;"/>
+            <ComboBox fx:id="comboPersona" promptText="Persona" prefWidth="210"/>
+            <Button text="Registrar asistencia" onAction="#onRegistrar" defaultButton="true"/>
+            <Separator/>
+            <Button text="Quitar seleccionado" onAction="#onQuitar"/>
+            <Label fx:id="etiquetaMensaje" wrapText="true"/>
+        </VBox>
+    </right>
+</BorderPane>

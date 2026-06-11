@@ -26,4 +26,6 @@
     <Button fx:id="btnNotas" text="Notas de seguimiento" onAction="#onNotas"/>
     <Button fx:id="btnDistribucion" text="Agapé — Distribución" onAction="#onDistribucion"/>
     <Button fx:id="btnSesiones" text="Sesiones de asistencia" onAction="#onSesiones"/>
+    <Button fx:id="btnAsistencia" text="Registro de asistencia" onAction="#onAsistencia"/>
+    <Button fx:id="btnQr" text="Códigos QR" onAction="#onQr"/>
 </VBox>

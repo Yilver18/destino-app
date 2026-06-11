@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.destino.app.view.QrController"
+            prefWidth="560" prefHeight="520">
+
+    <top>
+        <VBox spacing="8">
+            <padding><Insets top="12" left="12" right="12" bottom="8"/></padding>
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <Button text="← Volver" onAction="#onVolver"/>
+                <Label text="Código QR de personas" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+            </HBox>
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <Label text="Persona:"/>
+                <ComboBox fx:id="comboPersona" prefWidth="320"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="10" alignment="CENTER">
+            <ImageView fx:id="imagenQr" fitWidth="300" fitHeight="300" preserveRatio="true"/>
+            <Label fx:id="etiquetaCodigo" style="-fx-font-size: 11px;"/>
+            <Button fx:id="btnGuardar" text="Guardar PNG" onAction="#onGuardar" disable="true"/>
+            <Label fx:id="etiquetaMensaje" wrapText="true"/>
+        </VBox>
+    </center>
+</BorderPane>
