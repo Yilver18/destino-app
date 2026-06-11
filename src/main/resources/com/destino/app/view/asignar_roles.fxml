@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.destino.app.view.AsignarRolesController"
+            prefWidth="640" prefHeight="420">
+
+    <top>
+        <VBox spacing="8">
+            <padding><Insets top="12" left="12" right="12" bottom="8"/></padding>
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <Button text="← Volver" onAction="#onVolver"/>
+                <Label text="Asignar roles" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+            </HBox>
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <Label text="Persona:"/>
+                <ComboBox fx:id="comboPersona" prefWidth="280"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <HBox spacing="12" alignment="CENTER">
+            <padding><Insets left="12" right="12" bottom="8"/></padding>
+            <VBox spacing="4">
+                <Label text="Roles disponibles"/>
+                <ListView fx:id="listaDisponibles" prefWidth="230" prefHeight="240"/>
+            </VBox>
+            <VBox spacing="8" alignment="CENTER">
+                <Button text="Asignar →" onAction="#onAsignar"/>
+                <Button text="← Quitar" onAction="#onQuitar"/>
+            </VBox>
+            <VBox spacing="4">
+                <Label text="Roles asignados"/>
+                <ListView fx:id="listaAsignados" prefWidth="230" prefHeight="240"/>
+            </VBox>
+        </HBox>
+    </center>
+
+    <bottom>
+        <Label fx:id="etiquetaMensaje" wrapText="true">
+            <BorderPane.margin><Insets left="12" bottom="10"/></BorderPane.margin>
+        </Label>
+    </bottom>
+</BorderPane>

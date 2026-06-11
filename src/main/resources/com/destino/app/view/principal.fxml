@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.destino.app.view.PrincipalController"
+      alignment="CENTER" spacing="15" prefWidth="500" prefHeight="350">
+    <padding>
+        <Insets top="30" right="40" bottom="30" left="40"/>
+    </padding>
+
+    <Label text="Panel principal" style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+    <Label fx:id="etiquetaBienvenida"/>
+    <Button fx:id="btnPersonas" text="Gestionar personas" onAction="#onPersonas"/>
+    <Button text="Cerrar sesión" onAction="#onCerrarSesion"/>
+    <Button fx:id="btnCasas" text="Gestionar casas" onAction="#onCasas"/>
+    <Button fx:id="btnMinisterios" text="Gestionar ministerios" onAction="#onMinisterios"/>
+    <Button fx:id="btnRoles" text="Asignar roles" onAction="#onRoles"/>
+</VBox>

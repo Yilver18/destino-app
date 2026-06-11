@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.destino.app.view.LoginController"
+      alignment="CENTER" spacing="15" prefWidth="360" prefHeight="320">
+    <padding>
+        <Insets top="30" right="40" bottom="30" left="40"/>
+    </padding>
+
+    <Label text="Destino App" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+    <Label text="Iniciar sesión"/>
+
+    <TextField fx:id="campoUsuario" promptText="Usuario"/>
+    <PasswordField fx:id="campoPassword" promptText="Contraseña"/>
+
+    <Button text="Entrar" onAction="#onEntrar" defaultButton="true" prefWidth="200"/>
+
+    <Label fx:id="etiquetaError" textFill="RED" wrapText="true"/>
+</VBox>
