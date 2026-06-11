@@ -64,7 +64,20 @@ public class PersonaDaoImpl implements PersonaDao {
         }
         return null;
     }
-
+    @Override
+    public Persona buscarPorQr(java.util.UUID qr) {
+        String sql = "SELECT " + COLUMNAS + " FROM persona WHERE qr_codigo = ?";
+        try (Connection con = Conexion.getInstancia().obtenerConexion();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setObject(1, qr);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) return mapear(rs);
+            }
+        } catch (SQLException e) {
+            throw new AccesoDatosException("Error al buscar persona por QR", e);
+        }
+        return null;
+    }
     @Override
     public Persona guardar(Persona p) {
         String sql = "INSERT INTO persona " +

@@ -27,6 +27,9 @@ public class PersonaService {
     public Persona buscarPorId(Long id) {
         return personaDao.buscarPorId(id);
     }
+    public Persona buscarPorQr(java.util.UUID qr) {
+        return personaDao.buscarPorQr(qr);
+    }
 
     public Persona registrar(Persona p) {
         validarDatos(p);

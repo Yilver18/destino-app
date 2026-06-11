@@ -7,6 +7,7 @@ import com.destino.app.model.Persona;
 import com.destino.app.model.SesionAsistencia;
 import com.destino.app.service.AsistenciaService;
 import com.destino.app.service.PersonaService;
+import com.destino.app.service.ResultadoAsistencia;
 import com.destino.app.service.SesionAsistenciaService;
 import com.destino.app.util.Navegador;
 import javafx.collections.FXCollections;
@@ -32,7 +33,7 @@ public class AsistenciaController {
 
     @FXML private ComboBox<Persona> comboPersona;
     @FXML private Label etiquetaMensaje;
-
+    @FXML private Button btnSincronizar;
     private final AsistenciaService service = new AsistenciaService();
     private final SesionAsistenciaService sesionService = new SesionAsistenciaService();
     private final PersonaService personaService = new PersonaService();
@@ -82,18 +83,20 @@ public class AsistenciaController {
 
     @FXML
     private void onRegistrar() {
+        SesionAsistencia s = comboSesion.getValue();
+        Persona p = comboPersona.getValue();
+        if (s == null) { mensaje("Elige una sesión.", Color.RED); return; }
         try {
-            SesionAsistencia s = comboSesion.getValue();
-            Persona p = comboPersona.getValue();
-            if (s == null) { mensaje("Elige una sesión.", Color.RED); return; }
-            service.registrarManual(s.getId(), p != null ? p.getId() : null);
-            mensaje("Asistencia registrada.", Color.GREEN);
+            ResultadoAsistencia r = service.registrar(s.getId(), p != null ? p.getId() : null, "MANUAL");
+            switch (r) {
+                case REGISTRADO -> { mensaje("Asistencia registrada.", Color.GREEN); recargar(); }
+                case DUPLICADO  -> mensaje("Esa persona ya estaba registrada.", Color.ORANGE);
+                case OFFLINE    -> mensaje("Sin conexión: guardado localmente (pendiente).", Color.ORANGE);
+            }
             comboPersona.setValue(null);
-            recargar();
-        } catch (ValidacionException e) {
+            actualizarPendientes();
+        } catch (com.destino.app.exceptions.ValidacionException e) {
             mensaje(e.getMessage(), Color.RED);
-        } catch (DestinoException e) {
-            mensaje("Error al registrar.", Color.RED);
         }
     }
 
@@ -104,7 +107,21 @@ public class AsistenciaController {
         service.eliminar(sel.getId());
         recargar();
     }
-
+    private void onSincronizar() {
+        try {
+            int n = service.sincronizarPendientes();
+            mensaje(n == 0 ? "No hay pendientes." : ("Sincronizados: " + n), Color.GREEN);
+            actualizarPendientes();
+            recargar();
+        } catch (com.destino.app.exceptions.DestinoException e) {
+            mensaje("No se pudo sincronizar (¿sigue sin conexión?).", Color.RED);
+        }
+    }
+    private void actualizarPendientes() {
+        int n = com.destino.app.util.ColaPendientes.contar();
+        btnSincronizar.setText("Sincronizar pendientes (" + n + ")");
+        btnSincronizar.setDisable(n == 0);
+    }
     @FXML
     private void onVolver() {
         Stage stage = (Stage) tablaAsistencia.getScene().getWindow();

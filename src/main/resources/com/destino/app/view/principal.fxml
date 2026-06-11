@@ -28,4 +28,5 @@
     <Button fx:id="btnSesiones" text="Sesiones de asistencia" onAction="#onSesiones"/>
     <Button fx:id="btnAsistencia" text="Registro de asistencia" onAction="#onAsistencia"/>
     <Button fx:id="btnQr" text="Códigos QR" onAction="#onQr"/>
+    <Button fx:id="btnEscaneo" text="Asistencia por QR" onAction="#onEscaneo"/>
 </VBox>

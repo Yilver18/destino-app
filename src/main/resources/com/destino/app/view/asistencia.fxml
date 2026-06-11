@@ -42,6 +42,8 @@
             <Separator/>
             <Button text="Quitar seleccionado" onAction="#onQuitar"/>
             <Label fx:id="etiquetaMensaje" wrapText="true"/>
+            <Separator/>
+            <Button fx:id="btnSincronizar" text="Sincronizar pendientes (0)" onAction="#onSincronizar" disable="true"/>
         </VBox>
     </right>
 </BorderPane>

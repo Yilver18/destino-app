@@ -44,7 +44,21 @@ public class AsistenciaDaoImpl implements AsistenciaDao {
             throw new AccesoDatosException("Error al registrar asistencia", e);
         }
     }
-
+    @Override
+    public boolean registrarConHora(Long sesionId, Long personaId, String metodo, java.time.OffsetDateTime hora) {
+        String sql = "INSERT INTO asistencia (sesion_id, persona_id, hora_registro, metodo, sincronizado) " +
+                "VALUES (?, ?, ?, ?, true) ON CONFLICT DO NOTHING";
+        try (Connection con = Conexion.getInstancia().obtenerConexion();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setLong(1, sesionId);
+            ps.setLong(2, personaId);
+            ps.setObject(3, hora);
+            ps.setString(4, metodo);
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            throw new AccesoDatosException("Error al sincronizar asistencia", e);
+        }
+    }
     @Override
     public void eliminar(Long id) {
         String sql = "DELETE FROM asistencia WHERE id = ?";
