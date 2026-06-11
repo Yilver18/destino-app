@@ -21,4 +21,5 @@
     <Button fx:id="btnOracion" text="Peticiones de oración" onAction="#onOracion"/>
     <Button fx:id="btnAgape" text="Agapé — Donaciones" onAction="#onAgape"/>
     <Button fx:id="btnCasaIntegrantes" text="Líderes y miembros de casas" onAction="#onCasaIntegrantes"/>
+    <Button fx:id="btnPredicas" text="Prédicas" onAction="#onPredicas"/>
 </VBox>
