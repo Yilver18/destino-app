@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.destino.app.view.ReunionesController"
+            prefWidth="840" prefHeight="500">
+
+    <top>
+        <HBox spacing="12" alignment="CENTER_LEFT">
+            <padding><Insets top="12" left="12" bottom="8"/></padding>
+            <Button text="← Volver" onAction="#onVolver"/>
+            <Label text="Reuniones Meet" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <TableView fx:id="tablaReuniones">
+            <columns>
+                <TableColumn fx:id="colNombre" text="Nombre" prefWidth="180"/>
+                <TableColumn fx:id="colDia" text="Día" prefWidth="100"/>
+                <TableColumn fx:id="colHora" text="Hora" prefWidth="80"/>
+                <TableColumn fx:id="colActiva" text="Activa" prefWidth="70"/>
+            </columns>
+            <BorderPane.margin><Insets left="12" bottom="12"/></BorderPane.margin>
+        </TableView>
+    </center>
+
+    <right>
+        <VBox spacing="8" prefWidth="280">
+            <padding><Insets top="0" right="12" bottom="12" left="12"/></padding>
+            <Label text="Datos" style="-fx-font-weight: bold;"/>
+            <TextField fx:id="campoNombre" promptText="Nombre (ej. 24 Horas)"/>
+            <TextField fx:id="campoUrl" promptText="URL de Google Meet"/>
+            <ComboBox fx:id="comboDia" promptText="Día"/>
+            <TextField fx:id="campoHora" promptText="Hora (HH:mm)"/>
+            <TextArea fx:id="campoDescripcion" promptText="Descripción" prefRowCount="2"/>
+            <CheckBox fx:id="checkActiva" text="Activa" selected="true"/>
+            <HBox spacing="8">
+                <Button text="Nuevo" onAction="#onNuevo"/>
+                <Button text="Guardar" onAction="#onGuardar" defaultButton="true"/>
+                <Button text="Inactivar" onAction="#onInactivar"/>
+            </HBox>
+            <Label fx:id="etiquetaMensaje" wrapText="true"/>
+        </VBox>
+    </right>
+</BorderPane>

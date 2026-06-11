@@ -28,6 +28,9 @@ public class PrincipalController {
     @FXML private Button btnQr;
     @FXML private Button btnEscaneo;
     @FXML private Button btnEventos;
+    @FXML private Button btnDevocionales;
+    @FXML private Button btnPastores;
+    @FXML private Button btnReuniones;
     // initialize() lo llama JavaFX automáticamente al cargar el FXML.
     @FXML
     public void initialize() {
@@ -74,6 +77,13 @@ public class PrincipalController {
         btnEscaneo.setManaged(puedeGestionar);
         btnEventos.setVisible(puedeGestionar);
         btnEventos.setManaged(puedeGestionar);
+        btnDevocionales.setVisible(puedeGestionar);
+        btnDevocionales.setManaged(puedeGestionar);
+        btnPastores.setVisible(puedeGestionar);
+        btnPastores.setManaged(puedeGestionar);
+        btnReuniones.setVisible(puedeGestionar);
+        btnReuniones.setManaged(puedeGestionar);
+
     }
 
     @FXML
@@ -189,5 +199,23 @@ public class PrincipalController {
         Stage stage = (Stage) etiquetaBienvenida.getScene().getWindow();
         Navegador.cambiarEscena(stage, "/com/destino/app/view/eventos.fxml",
                 "Destino App — Eventos");
+    }
+    @FXML
+    private void onDevocionales() {
+        Stage stage = (Stage) etiquetaBienvenida.getScene().getWindow();
+        Navegador.cambiarEscena(stage, "/com/destino/app/view/devocionales.fxml",
+                "Destino App — Devocionales");
+    }
+    @FXML
+    private void onPastores() {
+        Stage stage = (Stage) etiquetaBienvenida.getScene().getWindow();
+        Navegador.cambiarEscena(stage, "/com/destino/app/view/pastores.fxml",
+                "Destino App — Pastores");
+    }
+    @FXML
+    private void onReuniones() {
+        Stage stage = (Stage) etiquetaBienvenida.getScene().getWindow();
+        Navegador.cambiarEscena(stage, "/com/destino/app/view/reuniones.fxml",
+                "Destino App — Reuniones Meet");
     }
 }
