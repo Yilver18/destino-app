@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.destino.app.view.OracionController"
+            prefWidth="880" prefHeight="500">
+
+    <top>
+        <HBox spacing="12" alignment="CENTER_LEFT">
+            <padding><Insets top="12" left="12" bottom="8"/></padding>
+            <Button text="← Volver" onAction="#onVolver"/>
+            <Label text="Peticiones de oración" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <TableView fx:id="tablaPeticiones">
+            <columns>
+                <TableColumn fx:id="colSolicitante" text="Solicitante" prefWidth="160"/>
+                <TableColumn fx:id="colDescripcion" text="Petición" prefWidth="320"/>
+                <TableColumn fx:id="colEstado" text="Estado" prefWidth="100"/>
+                <TableColumn fx:id="colFecha" text="Fecha" prefWidth="100"/>
+            </columns>
+            <BorderPane.margin><Insets left="12" bottom="12"/></BorderPane.margin>
+        </TableView>
+    </center>
+
+    <right>
+        <VBox spacing="8" prefWidth="260">
+            <padding><Insets top="0" right="12" bottom="12" left="12"/></padding>
+            <Label text="Nueva petición" style="-fx-font-weight: bold;"/>
+            <Label text="Solicitante"/>
+            <ComboBox fx:id="comboSolicitante" prefWidth="230"/>
+            <TextArea fx:id="campoDescripcion" promptText="Petición" prefRowCount="4"/>
+            <CheckBox fx:id="checkPrivada" text="Privada (solo líderes)"/>
+            <Button text="Registrar" onAction="#onRegistrar" defaultButton="true"/>
+            <Separator/>
+            <Button text="Marcar como respondida" onAction="#onResponder"/>
+            <Label fx:id="etiquetaMensaje" wrapText="true"/>
+        </VBox>
+    </right>
+</BorderPane>

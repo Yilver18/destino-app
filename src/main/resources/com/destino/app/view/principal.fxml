@@ -18,4 +18,5 @@
     <Button fx:id="btnMinisterios" text="Gestionar ministerios" onAction="#onMinisterios"/>
     <Button fx:id="btnRoles" text="Asignar roles" onAction="#onRoles"/>
     <Button fx:id="btnAcademias" text="Gestionar academias" onAction="#onAcademias"/>
+    <Button fx:id="btnOracion" text="Peticiones de oración" onAction="#onOracion"/>
 </VBox>
