@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.destino.app.view.SesionesController"
+            prefWidth="820" prefHeight="500">
+
+    <top>
+        <HBox spacing="12" alignment="CENTER_LEFT">
+            <padding><Insets top="12" left="12" bottom="8"/></padding>
+            <Button text="← Volver" onAction="#onVolver"/>
+            <Label text="Sesiones de asistencia" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <TableView fx:id="tablaSesiones">
+            <columns>
+                <TableColumn fx:id="colFecha" text="Fecha" prefWidth="110"/>
+                <TableColumn fx:id="colContexto" text="Contexto" prefWidth="110"/>
+                <TableColumn fx:id="colReferencia" text="Servicio / Casa / Academia" prefWidth="230"/>
+                <TableColumn fx:id="colDescripcion" text="Descripción" prefWidth="200"/>
+            </columns>
+            <BorderPane.margin><Insets left="12" bottom="12"/></BorderPane.margin>
+        </TableView>
+    </center>
+
+    <right>
+        <VBox spacing="8" prefWidth="240">
+            <padding><Insets top="0" right="12" bottom="12" left="12"/></padding>
+            <Label text="Nueva sesión" style="-fx-font-weight: bold;"/>
+            <DatePicker fx:id="fecha" promptText="Fecha"/>
+            <ComboBox fx:id="comboContexto" promptText="Contexto" prefWidth="210"/>
+            <ComboBox fx:id="comboReferencia" promptText="Servicio / Casa / Academia" prefWidth="210"/>
+            <TextField fx:id="campoDescripcion" promptText="Descripción (opcional)"/>
+            <Button text="Crear sesión" onAction="#onCrear" defaultButton="true"/>
+            <Label fx:id="etiquetaMensaje" wrapText="true"/>
+        </VBox>
+    </right>
+</BorderPane>

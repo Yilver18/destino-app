@@ -23,6 +23,7 @@ public class PrincipalController {
     @FXML private Button btnVoluntarios;
     @FXML private Button btnNotas;
     @FXML private Button btnDistribucion;
+    @FXML private Button btnSesiones;
     // initialize() lo llama JavaFX automáticamente al cargar el FXML.
     @FXML
     public void initialize() {
@@ -59,6 +60,8 @@ public class PrincipalController {
         btnNotas.setManaged(puedeGestionar);
         btnDistribucion.setVisible(puedeGestionar);
         btnDistribucion.setManaged(puedeGestionar);
+        btnSesiones.setVisible(puedeGestionar);
+        btnSesiones.setManaged(puedeGestionar);
     }
 
     @FXML
@@ -144,5 +147,11 @@ public class PrincipalController {
         Stage stage = (Stage) etiquetaBienvenida.getScene().getWindow();
         Navegador.cambiarEscena(stage, "/com/destino/app/view/distribucion.fxml",
                 "Destino App — Distribución de mercados");
+    }
+    @FXML
+    private void onSesiones() {
+        Stage stage = (Stage) etiquetaBienvenida.getScene().getWindow();
+        Navegador.cambiarEscena(stage, "/com/destino/app/view/sesiones.fxml",
+                "Destino App — Sesiones de asistencia");
     }
 }
