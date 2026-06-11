@@ -24,4 +24,5 @@
     <Button fx:id="btnPredicas" text="Prédicas" onAction="#onPredicas"/>
     <Button fx:id="btnVoluntarios" text="Voluntarios" onAction="#onVoluntarios"/>
     <Button fx:id="btnNotas" text="Notas de seguimiento" onAction="#onNotas"/>
+    <Button fx:id="btnDistribucion" text="Agapé — Distribución" onAction="#onDistribucion"/>
 </VBox>

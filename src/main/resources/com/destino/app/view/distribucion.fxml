@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.destino.app.view.DistribucionController"
+            prefWidth="880" prefHeight="500">
+
+    <top>
+        <HBox spacing="12" alignment="CENTER_LEFT">
+            <padding><Insets top="12" left="12" bottom="8"/></padding>
+            <Button text="← Volver" onAction="#onVolver"/>
+            <Label text="Agapé — Distribución de mercados" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <TableView fx:id="tablaDistribuciones">
+            <columns>
+                <TableColumn fx:id="colBeneficiario" text="Beneficiario" prefWidth="190"/>
+                <TableColumn fx:id="colFecha" text="Fecha" prefWidth="100"/>
+                <TableColumn fx:id="colCantidad" text="Cantidad" prefWidth="80"/>
+                <TableColumn fx:id="colDescripcion" text="Descripción" prefWidth="260"/>
+            </columns>
+            <BorderPane.margin><Insets left="12" bottom="12"/></BorderPane.margin>
+        </TableView>
+    </center>
+
+    <right>
+        <VBox spacing="8" prefWidth="260">
+            <padding><Insets top="0" right="12" bottom="12" left="12"/></padding>
+            <Label text="Nueva entrega" style="-fx-font-weight: bold;"/>
+            <Label text="Beneficiario registrado (opcional)"/>
+            <ComboBox fx:id="comboBeneficiario" prefWidth="230"/>
+            <TextField fx:id="campoNombreBeneficiario" promptText="...o nombre externo"/>
+            <DatePicker fx:id="fecha" promptText="Fecha de entrega"/>
+            <TextField fx:id="campoCantidad" promptText="Cantidad (mercados)"/>
+            <TextArea fx:id="campoDescripcion" promptText="Descripción" prefRowCount="3"/>
+            <Button text="Registrar entrega" onAction="#onRegistrar" defaultButton="true"/>
+            <Label fx:id="etiquetaMensaje" wrapText="true"/>
+        </VBox>
+    </right>
+</BorderPane>
