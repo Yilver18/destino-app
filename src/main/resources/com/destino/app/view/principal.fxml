@@ -23,4 +23,5 @@
     <Button fx:id="btnCasaIntegrantes" text="Líderes y miembros de casas" onAction="#onCasaIntegrantes"/>
     <Button fx:id="btnPredicas" text="Prédicas" onAction="#onPredicas"/>
     <Button fx:id="btnVoluntarios" text="Voluntarios" onAction="#onVoluntarios"/>
+    <Button fx:id="btnNotas" text="Notas de seguimiento" onAction="#onNotas"/>
 </VBox>
