@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.destino.app.view.CasaIntegrantesController"
+            prefWidth="760" prefHeight="520">
+
+    <top>
+        <VBox spacing="8">
+            <padding><Insets top="12" left="12" right="12" bottom="8"/></padding>
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <Button text="← Volver" onAction="#onVolver"/>
+                <Label text="Líderes y miembros de Casas" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+            </HBox>
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <Label text="Casa:"/>
+                <ComboBox fx:id="comboCasa" prefWidth="280"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <HBox spacing="16" alignment="TOP_CENTER">
+            <padding><Insets left="12" right="12" bottom="12"/></padding>
+
+            <VBox spacing="6">
+                <Label text="Líderes" style="-fx-font-weight: bold;"/>
+                <ListView fx:id="listaLideres" prefWidth="320" prefHeight="220"/>
+                <HBox spacing="6">
+                    <ComboBox fx:id="comboNuevoLider" prefWidth="200"/>
+                    <Button text="Agregar" onAction="#onAgregarLider"/>
+                </HBox>
+                <Button text="Quitar líder seleccionado" onAction="#onQuitarLider"/>
+            </VBox>
+
+            <VBox spacing="6">
+                <Label text="Miembros" style="-fx-font-weight: bold;"/>
+                <ListView fx:id="listaMiembros" prefWidth="320" prefHeight="220"/>
+                <HBox spacing="6">
+                    <ComboBox fx:id="comboNuevoMiembro" prefWidth="200"/>
+                    <Button text="Agregar" onAction="#onAgregarMiembro"/>
+                </HBox>
+                <Button text="Quitar miembro seleccionado" onAction="#onQuitarMiembro"/>
+            </VBox>
+        </HBox>
+    </center>
+
+    <bottom>
+        <Label fx:id="etiquetaMensaje" wrapText="true">
+            <BorderPane.margin><Insets left="12" bottom="10"/></BorderPane.margin>
+        </Label>
+    </bottom>
+</BorderPane>
