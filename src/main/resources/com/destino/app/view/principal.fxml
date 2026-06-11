@@ -22,4 +22,5 @@
     <Button fx:id="btnAgape" text="Agapé — Donaciones" onAction="#onAgape"/>
     <Button fx:id="btnCasaIntegrantes" text="Líderes y miembros de casas" onAction="#onCasaIntegrantes"/>
     <Button fx:id="btnPredicas" text="Prédicas" onAction="#onPredicas"/>
+    <Button fx:id="btnVoluntarios" text="Voluntarios" onAction="#onVoluntarios"/>
 </VBox>

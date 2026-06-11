@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.destino.app.view.VoluntariosController"
+            prefWidth="940" prefHeight="520">
+
+    <top>
+        <HBox spacing="12" alignment="CENTER_LEFT">
+            <padding><Insets top="12" left="12" bottom="8"/></padding>
+            <Button text="← Volver" onAction="#onVolver"/>
+            <Label text="Voluntarios" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <TableView fx:id="tablaAsignaciones">
+            <columns>
+                <TableColumn fx:id="colPersona" text="Voluntario" prefWidth="170"/>
+                <TableColumn fx:id="colMinisterio" text="Ministerio" prefWidth="140"/>
+                <TableColumn fx:id="colServicio" text="Servicio" prefWidth="160"/>
+                <TableColumn fx:id="colFecha" text="Fecha" prefWidth="100"/>
+                <TableColumn fx:id="colEstado" text="Estado" prefWidth="100"/>
+            </columns>
+            <BorderPane.margin><Insets left="12" bottom="12"/></BorderPane.margin>
+        </TableView>
+    </center>
+
+    <right>
+        <VBox spacing="8" prefWidth="250">
+            <padding><Insets top="0" right="12" bottom="12" left="12"/></padding>
+            <Label text="Nueva asignación" style="-fx-font-weight: bold;"/>
+            <ComboBox fx:id="comboPersona" promptText="Voluntario" prefWidth="220"/>
+            <ComboBox fx:id="comboMinisterio" promptText="Ministerio" prefWidth="220"/>
+            <ComboBox fx:id="comboServicio" promptText="Servicio" prefWidth="220"/>
+            <DatePicker fx:id="fechaServicio" promptText="Fecha del servicio"/>
+            <Button text="Asignar" onAction="#onAsignar" defaultButton="true"/>
+            <Separator/>
+            <HBox spacing="6">
+                <Button text="Confirmar" onAction="#onConfirmar"/>
+                <Button text="Cancelar" onAction="#onCancelar"/>
+            </HBox>
+            <Button text="Eliminar asignación" onAction="#onEliminar"/>
+            <Label fx:id="etiquetaMensaje" wrapText="true"/>
+        </VBox>
+    </right>
+</BorderPane>
