@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.destino.app.view.EventosController"
+            prefWidth="880" prefHeight="540">
+
+    <top>
+        <HBox spacing="12" alignment="CENTER_LEFT">
+            <padding><Insets top="12" left="12" bottom="8"/></padding>
+            <Button text="← Volver" onAction="#onVolver"/>
+            <Label text="Eventos" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <TableView fx:id="tablaEventos">
+            <columns>
+                <TableColumn fx:id="colTitulo" text="Título" prefWidth="220"/>
+                <TableColumn fx:id="colFecha" text="Fecha" prefWidth="100"/>
+                <TableColumn fx:id="colLugar" text="Lugar" prefWidth="160"/>
+                <TableColumn fx:id="colPublicado" text="Publicado" prefWidth="80"/>
+            </columns>
+            <BorderPane.margin><Insets left="12" bottom="12"/></BorderPane.margin>
+        </TableView>
+    </center>
+
+    <right>
+        <VBox spacing="8" prefWidth="280">
+            <padding><Insets top="0" right="12" bottom="12" left="12"/></padding>
+            <Label text="Datos" style="-fx-font-weight: bold;"/>
+            <TextField fx:id="campoTitulo" promptText="Título"/>
+            <TextArea fx:id="campoDescripcion" promptText="Descripción" prefRowCount="3"/>
+            <DatePicker fx:id="fecha" promptText="Fecha"/>
+            <TextField fx:id="campoHora" promptText="Hora (HH:mm)"/>
+            <TextField fx:id="campoLugar" promptText="Lugar"/>
+            <TextField fx:id="campoImagenUrl" promptText="URL de imagen"/>
+            <CheckBox fx:id="checkPublicado" text="Publicado"/>
+            <HBox spacing="8">
+                <Button text="Nuevo" onAction="#onNuevo"/>
+                <Button text="Guardar" onAction="#onGuardar" defaultButton="true"/>
+                <Button text="Eliminar" onAction="#onEliminar"/>
+            </HBox>
+            <Label fx:id="etiquetaMensaje" wrapText="true"/>
+        </VBox>
+    </right>
+</BorderPane>
