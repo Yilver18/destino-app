@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.destino.app.view.AgapeController"
+            prefWidth="900" prefHeight="500">
+
+    <top>
+        <HBox spacing="12" alignment="CENTER_LEFT">
+            <padding><Insets top="12" left="12" bottom="8"/></padding>
+            <Button text="← Volver" onAction="#onVolver"/>
+            <Label text="Agapé — Donaciones" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <TableView fx:id="tablaDonaciones">
+            <columns>
+                <TableColumn fx:id="colDonante" text="Donante" prefWidth="180"/>
+                <TableColumn fx:id="colTipo" text="Tipo" prefWidth="80"/>
+                <TableColumn fx:id="colMonto" text="Monto" prefWidth="110"/>
+                <TableColumn fx:id="colDescripcion" text="Descripción" prefWidth="240"/>
+                <TableColumn fx:id="colFecha" text="Fecha" prefWidth="100"/>
+            </columns>
+            <BorderPane.margin><Insets left="12" bottom="12"/></BorderPane.margin>
+        </TableView>
+    </center>
+
+    <right>
+        <VBox spacing="8" prefWidth="270">
+            <padding><Insets top="0" right="12" bottom="12" left="12"/></padding>
+            <Label text="Nueva donación" style="-fx-font-weight: bold;"/>
+            <Label text="Donante registrado (opcional)"/>
+            <ComboBox fx:id="comboDonante" prefWidth="240"/>
+            <TextField fx:id="campoNombreDonante" promptText="...o nombre del donante externo"/>
+            <ComboBox fx:id="comboTipo" promptText="Tipo"/>
+            <TextField fx:id="campoMonto" promptText="Monto (opcional en físicas)"/>
+            <TextArea fx:id="campoDescripcion" promptText="Descripción" prefRowCount="3"/>
+            <Button text="Registrar donación" onAction="#onRegistrar" defaultButton="true"/>
+            <Label fx:id="etiquetaMensaje" wrapText="true"/>
+        </VBox>
+    </right>
+</BorderPane>
