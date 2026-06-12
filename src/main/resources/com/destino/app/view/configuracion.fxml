@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.destino.app.view.ConfiguracionController"
+            prefWidth="820" prefHeight="500">
+
+    <top>
+        <HBox spacing="12" alignment="CENTER_LEFT">
+            <padding><Insets top="12" left="12" bottom="8"/></padding>
+            <Button text="← Volver" onAction="#onVolver"/>
+            <Label text="Configuración" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <TableView fx:id="tablaConfig">
+            <columns>
+                <TableColumn fx:id="colClave" text="Clave" prefWidth="200"/>
+                <TableColumn fx:id="colValor" text="Valor" prefWidth="280"/>
+                <TableColumn fx:id="colDescripcion" text="Descripción" prefWidth="200"/>
+            </columns>
+            <BorderPane.margin><Insets left="12" bottom="12"/></BorderPane.margin>
+        </TableView>
+    </center>
+
+    <right>
+        <VBox spacing="8" prefWidth="260">
+            <padding><Insets top="0" right="12" bottom="12" left="12"/></padding>
+            <Label text="Clave-Valor" style="-fx-font-weight: bold;"/>
+            <TextField fx:id="campoClave" promptText="Clave (ej. URL_RADIO)"/>
+            <TextField fx:id="campoValor" promptText="Valor"/>
+            <TextField fx:id="campoDescripcion" promptText="Descripción (opcional)"/>
+            <HBox spacing="8">
+                <Button text="Nuevo" onAction="#onNuevo"/>
+                <Button text="Guardar" onAction="#onGuardar" defaultButton="true"/>
+                <Button text="Eliminar" onAction="#onEliminar"/>
+            </HBox>
+            <Label fx:id="etiquetaMensaje" wrapText="true"/>
+        </VBox>
+    </right>
+</BorderPane>
