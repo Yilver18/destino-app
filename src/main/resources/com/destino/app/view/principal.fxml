@@ -3,36 +3,73 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 
-<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.destino.app.view.PrincipalController"
-      alignment="CENTER" spacing="15" prefWidth="500" prefHeight="350">
-    <padding>
-        <Insets top="30" right="40" bottom="30" left="40"/>
-    </padding>
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.destino.app.view.PrincipalController"
+            prefWidth="640" prefHeight="560">
 
-    <Label text="Panel principal" style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
-    <Label fx:id="etiquetaBienvenida"/>
-    <Button fx:id="btnPersonas" text="Gestionar personas" onAction="#onPersonas"/>
-    <Button text="Cerrar sesión" onAction="#onCerrarSesion"/>
-    <Button fx:id="btnCasas" text="Gestionar casas" onAction="#onCasas"/>
-    <Button fx:id="btnMinisterios" text="Gestionar ministerios" onAction="#onMinisterios"/>
-    <Button fx:id="btnRoles" text="Asignar roles" onAction="#onRoles"/>
-    <Button fx:id="btnAcademias" text="Gestionar academias" onAction="#onAcademias"/>
-    <Button fx:id="btnOracion" text="Peticiones de oración" onAction="#onOracion"/>
-    <Button fx:id="btnAgape" text="Agapé — Donaciones" onAction="#onAgape"/>
-    <Button fx:id="btnCasaIntegrantes" text="Líderes y miembros de casas" onAction="#onCasaIntegrantes"/>
-    <Button fx:id="btnPredicas" text="Prédicas" onAction="#onPredicas"/>
-    <Button fx:id="btnVoluntarios" text="Voluntarios" onAction="#onVoluntarios"/>
-    <Button fx:id="btnNotas" text="Notas de seguimiento" onAction="#onNotas"/>
-    <Button fx:id="btnDistribucion" text="Agapé — Distribución" onAction="#onDistribucion"/>
-    <Button fx:id="btnSesiones" text="Sesiones de asistencia" onAction="#onSesiones"/>
-    <Button fx:id="btnAsistencia" text="Registro de asistencia" onAction="#onAsistencia"/>
-    <Button fx:id="btnQr" text="Códigos QR" onAction="#onQr"/>
-    <Button fx:id="btnEscaneo" text="Asistencia por QR" onAction="#onEscaneo"/>
-    <Button fx:id="btnEventos" text="Gestionar eventos" onAction="#onEventos"/>
-    <Button fx:id="btnDevocionales" text="Gestionar devocionales" onAction="#onDevocionales"/>
-    <Button fx:id="btnPastores" text="Gestionar pastores" onAction="#onPastores"/>
-    <Button fx:id="btnReuniones" text="Reuniones Meet" onAction="#onReuniones"/>
-    <Button fx:id="btnConfig" text="Configuración" onAction="#onConfig"/>
-    <Button fx:id="btnPaginas" text="Páginas institucionales" onAction="#onPaginas"/>
-</VBox>
+    <top>
+        <VBox alignment="CENTER" spacing="4">
+            <padding><Insets top="16" right="20" bottom="8" left="20"/></padding>
+            <Label text="Panel principal" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+            <Label fx:id="etiquetaBienvenida"/>
+        </VBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true">
+            <VBox spacing="10">
+                <padding><Insets top="6" right="16" bottom="16" left="16"/></padding>
+
+                <Label text="Personas y grupos" style="-fx-font-weight: bold;"/>
+                <FlowPane hgap="8" vgap="8">
+                    <Button fx:id="btnPersonas" text="Gestionar personas" onAction="#onPersonas"/>
+                    <Button fx:id="btnCasas" text="Gestionar casas" onAction="#onCasas"/>
+                    <Button fx:id="btnCasaIntegrantes" text="Líderes y miembros de casas" onAction="#onCasaIntegrantes"/>
+                    <Button fx:id="btnMinisterios" text="Gestionar ministerios" onAction="#onMinisterios"/>
+                    <Button fx:id="btnRoles" text="Asignar roles" onAction="#onRoles"/>
+                </FlowPane>
+
+                <Label text="Asistencia" style="-fx-font-weight: bold;"/>
+                <FlowPane hgap="8" vgap="8">
+                    <Button fx:id="btnSesiones" text="Sesiones de asistencia" onAction="#onSesiones"/>
+                    <Button fx:id="btnAsistencia" text="Registro de asistencia" onAction="#onAsistencia"/>
+                    <Button fx:id="btnQr" text="Códigos QR" onAction="#onQr"/>
+                    <Button fx:id="btnEscaneo" text="Asistencia por QR" onAction="#onEscaneo"/>
+                </FlowPane>
+
+                <Label text="Actividades y seguimiento" style="-fx-font-weight: bold;"/>
+                <FlowPane hgap="8" vgap="8">
+                    <Button fx:id="btnAcademias" text="Gestionar academias" onAction="#onAcademias"/>
+                    <Button fx:id="btnVoluntarios" text="Voluntarios" onAction="#onVoluntarios"/>
+                    <Button fx:id="btnOracion" text="Peticiones de oración" onAction="#onOracion"/>
+                    <Button fx:id="btnNotas" text="Notas de seguimiento" onAction="#onNotas"/>
+                    <Button fx:id="btnPredicas" text="Prédicas" onAction="#onPredicas"/>
+                </FlowPane>
+
+                <Label text="Agapé" style="-fx-font-weight: bold;"/>
+                <FlowPane hgap="8" vgap="8">
+                    <Button fx:id="btnAgape" text="Agapé — Donaciones" onAction="#onAgape"/>
+                    <Button fx:id="btnDistribucion" text="Agapé — Distribución" onAction="#onDistribucion"/>
+                </FlowPane>
+
+                <Label text="Contenido (CMS)" style="-fx-font-weight: bold;"/>
+                <FlowPane hgap="8" vgap="8">
+                    <Button fx:id="btnEventos" text="Gestionar eventos" onAction="#onEventos"/>
+                    <Button fx:id="btnDevocionales" text="Gestionar devocionales" onAction="#onDevocionales"/>
+                    <Button fx:id="btnPastores" text="Gestionar pastores" onAction="#onPastores"/>
+                    <Button fx:id="btnReuniones" text="Reuniones Meet" onAction="#onReuniones"/>
+                    <Button fx:id="btnConfig" text="Configuración" onAction="#onConfig"/>
+                    <Button fx:id="btnPaginas" text="Páginas institucionales" onAction="#onPaginas"/>
+                </FlowPane>
+
+                <Label text="Inteligencia Artificial" style="-fx-font-weight: bold;"/>
+                <FlowPane hgap="8" vgap="8">
+                    <Button fx:id="btnAsistente" text="Asistente bíblico" onAction="#onAsistente"/>
+                </FlowPane>
+
+                <Separator/>
+                <Button text="Cerrar sesión" onAction="#onCerrarSesion"/>
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

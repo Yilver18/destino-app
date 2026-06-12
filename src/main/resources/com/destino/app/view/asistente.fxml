@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.destino.app.view.AsistenteController"
+            prefWidth="640" prefHeight="560">
+
+    <top>
+        <HBox spacing="12" alignment="CENTER_LEFT">
+            <padding><Insets top="12" left="12" bottom="8"/></padding>
+            <Button text="← Volver" onAction="#onVolver"/>
+            <Label text="Asistente bíblico" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <TextArea fx:id="areaChat" editable="false" wrapText="true">
+            <BorderPane.margin><Insets left="12" right="12"/></BorderPane.margin>
+        </TextArea>
+    </center>
+
+    <bottom>
+        <HBox spacing="8" alignment="CENTER">
+            <padding><Insets top="8" left="12" right="12" bottom="12"/></padding>
+            <TextField fx:id="campoMensaje" promptText="Escribe tu pregunta..." HBox.hgrow="ALWAYS"
+                       onAction="#onEnviar"/>
+            <Button fx:id="btnEnviar" text="Enviar" onAction="#onEnviar" defaultButton="true"/>
+        </HBox>
+    </bottom>
+</BorderPane>
