@@ -36,6 +36,8 @@ public class PrincipalController {
     @FXML private Button btnAsistente;
     @FXML private Button btnAnalisisAsistencia;
     @FXML private Button btnCrecimiento;
+    @FXML private Button btnReporteAgape;
+    @FXML private Button btnDashboard;
     // initialize() lo llama JavaFX automáticamente al cargar el FXML.
     @FXML
     public void initialize() {
@@ -98,6 +100,10 @@ public class PrincipalController {
         btnAnalisisAsistencia.setManaged(puedeGestionar);
         btnCrecimiento.setVisible(puedeGestionar);
         btnCrecimiento.setManaged(puedeGestionar);
+        btnReporteAgape.setVisible(puedeGestionar);
+        btnReporteAgape.setManaged(puedeGestionar);
+        btnDashboard.setVisible(puedeGestionar);
+        btnDashboard.setManaged(puedeGestionar);
     }
 
     @FXML
@@ -261,5 +267,17 @@ public class PrincipalController {
         Stage stage = (Stage) etiquetaBienvenida.getScene().getWindow();
         Navegador.cambiarEscena(stage, "/com/destino/app/view/estadisticas_crecimiento.fxml",
                 "Destino App — Estadísticas de crecimiento");
+    }
+    @FXML
+    private void onReporteAgape() {
+        Stage stage = (Stage) etiquetaBienvenida.getScene().getWindow();
+        Navegador.cambiarEscena(stage, "/com/destino/app/view/reportes_agape.fxml",
+                "Destino App — Reportes de Agapé");
+    }
+    @FXML
+    private void onDashboard() {
+        Stage stage = (Stage) etiquetaBienvenida.getScene().getWindow();
+        Navegador.cambiarEscena(stage, "/com/destino/app/view/dashboard.fxml",
+                "Destino App — Dashboard");
     }
 }

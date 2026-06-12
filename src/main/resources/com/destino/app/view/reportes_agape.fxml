@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.destino.app.view.AgapeReporteController"
+            prefWidth="620" prefHeight="560">
+
+    <top>
+        <HBox spacing="12" alignment="CENTER_LEFT">
+            <padding><Insets top="12" left="12" bottom="8"/></padding>
+            <Button text="← Volver" onAction="#onVolver"/>
+            <Label text="Reportes de Agapé (IA)" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <TextArea fx:id="areaReporte" editable="false" wrapText="true"
+                  promptText="Pulsa 'Generar' para que la IA analice el impacto de Agapé.">
+            <BorderPane.margin><Insets left="12" right="12"/></BorderPane.margin>
+        </TextArea>
+    </center>
+
+    <bottom>
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <padding><Insets top="8" left="12" right="12" bottom="12"/></padding>
+            <Button fx:id="btnGenerar" text="Generar con IA" onAction="#onGenerar" defaultButton="true"/>
+            <Label fx:id="etiquetaMensaje" wrapText="true"/>
+        </HBox>
+    </bottom>
+</BorderPane>

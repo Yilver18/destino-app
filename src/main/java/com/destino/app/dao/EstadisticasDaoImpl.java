@@ -88,4 +88,41 @@ public class EstadisticasDaoImpl implements EstadisticasDao {
         }
         return filas;
     }
+    @Override
+    public List<String[]> donacionesPorTipo() {
+        String sql = "SELECT tipo, COUNT(*) AS cantidad, COALESCE(SUM(monto), 0) AS total " +
+                "FROM donacion GROUP BY tipo ORDER BY tipo";
+        List<String[]> filas = new ArrayList<>();
+        try (Connection con = Conexion.getInstancia().obtenerConexion();
+             PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                filas.add(new String[]{
+                        rs.getString("tipo"),
+                        String.valueOf(rs.getInt("cantidad")),
+                        rs.getBigDecimal("total").toPlainString()
+                });
+            }
+        } catch (SQLException e) {
+            throw new AccesoDatosException("Error en donaciones por tipo", e);
+        }
+        return filas;
+    }
+
+    @Override
+    public String[] distribucionTotales() {
+        String sql = "SELECT COUNT(*) AS entregas, COALESCE(SUM(cantidad), 0) AS mercados " +
+                "FROM distribucion_mercado";
+        try (Connection con = Conexion.getInstancia().obtenerConexion();
+             PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                return new String[]{ String.valueOf(rs.getInt("entregas")),
+                        String.valueOf(rs.getInt("mercados")) };
+            }
+        } catch (SQLException e) {
+            throw new AccesoDatosException("Error en totales de distribución", e);
+        }
+        return new String[]{ "0", "0" };
+    }
 }

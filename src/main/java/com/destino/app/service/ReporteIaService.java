@@ -55,4 +55,24 @@ public class ReporteIaService {
         reporteIaDao.guardar("CRECIMIENTO", reporte, generadoPor);
         return reporte;
     }
+    public String analizarAgape(Long generadoPor) {
+        StringBuilder datos = new StringBuilder("Datos del ministerio de ayuda social (Agapé):\n\n");
+        datos.append("Donaciones por tipo:\n");
+        for (String[] r : estadisticasDao.donacionesPorTipo()) {
+            datos.append("- ").append(r[0]).append(": ").append(r[1])
+                    .append(" donaciones, monto total ").append(r[2]).append("\n");
+        }
+        String[] dist = estadisticasDao.distribucionTotales();
+        datos.append("\nDistribución de mercados: ").append(dist[0]).append(" entregas, ")
+                .append(dist[1]).append(" mercados entregados.\n");
+
+        String sistema = "Eres un analista que ayuda al ministerio de ayuda social (Agapé) de una " +
+                "iglesia cristiana a entender su impacto. Respondes en español, claro, breve y agradecido.";
+        String prompt = "Analiza estos datos de donaciones y distribución de Agapé y entrega: " +
+                "1) un resumen del impacto, 2) observaciones, 3) dos sugerencias de mejora.\n\n" + datos;
+
+        String reporte = GroqApiClient.preguntar(sistema, prompt);
+        reporteIaDao.guardar("AGAPE", reporte, generadoPor);
+        return reporte;
+    }
 }

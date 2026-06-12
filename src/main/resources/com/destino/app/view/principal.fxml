@@ -61,12 +61,16 @@
                     <Button fx:id="btnConfig" text="Configuración" onAction="#onConfig"/>
                     <Button fx:id="btnPaginas" text="Páginas institucionales" onAction="#onPaginas"/>
                 </FlowPane>
-
+                <Label text="Reportes y estadísticas" style="-fx-font-weight: bold;"/>
+                <FlowPane hgap="8" vgap="8">
+                    <Button fx:id="btnDashboard" text="Dashboard de estadísticas" onAction="#onDashboard"/>
+                </FlowPane>
                 <Label text="Inteligencia Artificial" style="-fx-font-weight: bold;"/>
                 <FlowPane hgap="8" vgap="8">
                     <Button fx:id="btnAsistente" text="Asistente bíblico" onAction="#onAsistente"/>
                     <Button fx:id="btnAnalisisAsistencia" text="Análisis de asistencia (IA)" onAction="#onAnalisisAsistencia"/>
                     <Button fx:id="btnCrecimiento" text="Estadísticas de crecimiento (IA)" onAction="#onCrecimiento"/>
+                    <Button fx:id="btnReporteAgape" text="Reportes de Agapé (IA)" onAction="#onReporteAgape"/>
                 </FlowPane>
 
                 <Separator/>
