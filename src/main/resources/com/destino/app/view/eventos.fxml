@@ -36,13 +36,15 @@
             <DatePicker fx:id="fecha" promptText="Fecha"/>
             <TextField fx:id="campoHora" promptText="Hora (HH:mm)"/>
             <TextField fx:id="campoLugar" promptText="Lugar"/>
-            <TextField fx:id="campoImagenUrl" promptText="URL de imagen"/>
-            <CheckBox fx:id="checkPublicado" text="Publicado"/>
-            <HBox spacing="8">
+            <HBox spacing="6">
+                <TextField fx:id="campoImagenUrl" promptText="URL de imagen" HBox.hgrow="ALWAYS"/>
+                <Button text="Subir" onAction="#onSubirImagen"/>
+            </HBox>            <HBox spacing="8">
                 <Button text="Nuevo" onAction="#onNuevo"/>
                 <Button text="Guardar" onAction="#onGuardar" defaultButton="true"/>
                 <Button text="Eliminar" onAction="#onEliminar"/>
             </HBox>
+
             <Label fx:id="etiquetaMensaje" wrapText="true"/>
         </VBox>
     </right>

@@ -4,16 +4,20 @@ import com.destino.app.exceptions.DestinoException;
 import com.destino.app.exceptions.ValidacionException;
 import com.destino.app.model.Evento;
 import com.destino.app.service.EventoService;
+import com.destino.app.util.CloudinaryUtil;
 import com.destino.app.util.Navegador;
 import com.destino.app.util.Sesion;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
@@ -140,7 +144,31 @@ public class EventosController {
     private String vacioANull(String s) {
         return (s == null || s.isBlank()) ? null : s.trim();
     }
+    @FXML
+    private void onSubirImagen() {
+        FileChooser fc = new FileChooser();
+        fc.setTitle("Elegir imagen");
+        fc.getExtensionFilters().add(
+                new FileChooser.ExtensionFilter("Imágenes", "*.png", "*.jpg", "*.jpeg", "*.webp"));
+        File archivo = fc.showOpenDialog(campoImagenUrl.getScene().getWindow());
+        if (archivo == null) return;
 
+        mensaje("Subiendo imagen...", Color.BLACK);
+        // La subida es de red: la hacemos en un hilo aparte para no congelar la UI.
+        Task<String> tarea = new Task<>() {
+            @Override protected String call() {
+                return CloudinaryUtil.subir(archivo);
+            }
+        };
+        tarea.setOnSucceeded(e -> {
+            campoImagenUrl.setText(tarea.getValue());
+            mensaje("Imagen subida.", Color.GREEN);
+        });
+        tarea.setOnFailed(e -> mensaje("No se pudo subir la imagen.", Color.RED));
+        Thread hilo = new Thread(tarea);
+        hilo.setDaemon(true);
+        hilo.start();
+    }
     private void mensaje(String texto, Color color) {
         etiquetaMensaje.setTextFill(color);
         etiquetaMensaje.setText(texto);
