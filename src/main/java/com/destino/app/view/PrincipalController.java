@@ -32,6 +32,7 @@ public class PrincipalController {
     @FXML private Button btnPastores;
     @FXML private Button btnReuniones;
     @FXML private Button btnConfig;
+    @FXML private Button btnPaginas;
     // initialize() lo llama JavaFX automáticamente al cargar el FXML.
     @FXML
     public void initialize() {
@@ -86,6 +87,8 @@ public class PrincipalController {
         btnReuniones.setManaged(puedeGestionar);
         btnConfig.setVisible(puedeGestionar);
         btnConfig.setManaged(puedeGestionar);
+        btnPaginas.setVisible(puedeGestionar);
+        btnPaginas.setManaged(puedeGestionar);
     }
 
     @FXML
@@ -225,5 +228,11 @@ public class PrincipalController {
         Stage stage = (Stage) etiquetaBienvenida.getScene().getWindow();
         Navegador.cambiarEscena(stage, "/com/destino/app/view/configuracion.fxml",
                 "Destino App — Configuración");
+    }
+    @FXML
+    private void onPaginas() {
+        Stage stage = (Stage) etiquetaBienvenida.getScene().getWindow();
+        Navegador.cambiarEscena(stage, "/com/destino/app/view/paginas.fxml",
+                "Destino App — Páginas institucionales");
     }
 }

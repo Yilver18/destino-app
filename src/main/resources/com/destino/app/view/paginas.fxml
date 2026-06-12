@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.destino.app.view.PaginasController"
+            prefWidth="900" prefHeight="540">
+
+    <top>
+        <HBox spacing="12" alignment="CENTER_LEFT">
+            <padding><Insets top="12" left="12" bottom="8"/></padding>
+            <Button text="← Volver" onAction="#onVolver"/>
+            <Label text="Páginas institucionales" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <TableView fx:id="tablaPaginas">
+            <columns>
+                <TableColumn fx:id="colClave" text="Clave" prefWidth="220"/>
+                <TableColumn fx:id="colTitulo" text="Título" prefWidth="240"/>
+            </columns>
+            <BorderPane.margin><Insets left="12" bottom="12"/></BorderPane.margin>
+        </TableView>
+    </center>
+
+    <right>
+        <VBox spacing="8" prefWidth="320">
+            <padding><Insets top="0" right="12" bottom="12" left="12"/></padding>
+            <Label text="Contenido" style="-fx-font-weight: bold;"/>
+            <TextField fx:id="campoClave" promptText="Clave (ej. NOSOTROS_HISTORIA)"/>
+            <TextField fx:id="campoTitulo" promptText="Título"/>
+            <TextArea fx:id="campoCuerpo" promptText="Cuerpo del texto" prefRowCount="8"/>
+            <TextField fx:id="campoImagenUrl" promptText="URL de imagen (opcional)"/>
+            <HBox spacing="8">
+                <Button text="Nuevo" onAction="#onNuevo"/>
+                <Button text="Guardar" onAction="#onGuardar" defaultButton="true"/>
+                <Button text="Eliminar" onAction="#onEliminar"/>
+            </HBox>
+            <Label fx:id="etiquetaMensaje" wrapText="true"/>
+        </VBox>
+    </right>
+</BorderPane>

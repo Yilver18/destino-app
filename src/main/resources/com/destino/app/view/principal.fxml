@@ -34,4 +34,5 @@
     <Button fx:id="btnPastores" text="Gestionar pastores" onAction="#onPastores"/>
     <Button fx:id="btnReuniones" text="Reuniones Meet" onAction="#onReuniones"/>
     <Button fx:id="btnConfig" text="Configuración" onAction="#onConfig"/>
+    <Button fx:id="btnPaginas" text="Páginas institucionales" onAction="#onPaginas"/>
 </VBox>
