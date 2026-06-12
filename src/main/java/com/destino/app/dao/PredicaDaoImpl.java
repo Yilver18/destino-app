@@ -49,7 +49,18 @@ public class PredicaDaoImpl implements PredicaDao {
         }
         return p;
     }
-
+    @Override
+    public void guardarResumen(Long id, String resumen) {
+        String sql = "UPDATE predica SET resumen_ia = ?, fecha_resumen = now() WHERE id = ?";
+        try (Connection con = Conexion.getInstancia().obtenerConexion();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, resumen);
+            ps.setLong(2, id);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new AccesoDatosException("Error al guardar resumen de prédica id=" + id, e);
+        }
+    }
     // Marca una prédica como la actual: apaga la anterior y prende la nueva,
     // todo en una TRANSACCIÓN (o pasa todo, o no pasa nada).
     @Override

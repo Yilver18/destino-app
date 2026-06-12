@@ -9,6 +9,7 @@ import com.destino.app.service.PredicaService;
 import com.destino.app.util.Navegador;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -31,6 +32,8 @@ public class PredicasController {
     @FXML private ComboBox<Persona> comboCreativo;
     @FXML private DatePicker fechaPublicacion;
     @FXML private Label etiquetaMensaje;
+    @FXML private TextArea campoResumen;
+    @FXML private Button btnGenerarResumen;
 
     private final PredicaService service = new PredicaService();
     private final PersonaService personaService = new PersonaService();
@@ -59,6 +62,9 @@ public class PredicasController {
         comboCreativo.setItems(FXCollections.observableArrayList(personaService.listar()));
 
         tablaPredicas.setItems(datos);
+        tablaPredicas.getSelectionModel().selectedItemProperty()
+                .addListener((obs, ant, sel) ->
+                        campoResumen.setText(sel != null ? sel.getResumenIa() : null));
         cargar();
     }
 
@@ -103,15 +109,55 @@ public class PredicasController {
                 "Destino App — Panel principal");
     }
 
+    @FXML
+    private void onGenerarResumen() {
+        Predica sel = tablaPredicas.getSelectionModel().getSelectedItem();
+        if (sel == null) { mensaje("Selecciona una prédica.", Color.RED); return; }
+
+        btnGenerarResumen.setDisable(true);
+        btnGenerarResumen.setText("Generando...");
+        Task<String> tarea = new Task<>() {
+            @Override protected String call() {
+                return service.generarResumen(sel, null);   // null = sin notas, solo el título
+            }
+        };
+        tarea.setOnSucceeded(e -> {
+            campoResumen.setText(tarea.getValue());
+            mensaje("Resumen generado y guardado.", Color.GREEN);
+            btnGenerarResumen.setDisable(false);
+            btnGenerarResumen.setText("Generar resumen IA");
+            cargar();
+        });
+        tarea.setOnFailed(e -> {
+            Throwable ex = tarea.getException();
+            mensaje("Error IA: " + (ex != null ? ex.getMessage() : "desconocido"), Color.RED);
+            btnGenerarResumen.setDisable(false);
+            btnGenerarResumen.setText("Generar resumen IA");
+        });
+        Thread hilo = new Thread(tarea);
+        hilo.setDaemon(true);
+        hilo.start();
+    }
+
+    @FXML
+    private void onGuardarResumen() {
+        Predica sel = tablaPredicas.getSelectionModel().getSelectedItem();
+        if (sel == null) { mensaje("Selecciona una prédica.", Color.RED); return; }
+        service.guardarResumen(sel.getId(), campoResumen.getText());
+        mensaje("Resumen guardado.", Color.GREEN);
+        cargar();
+    }
     private void limpiar() {
         campoTitulo.clear();
         campoYoutube.clear();
         comboCreativo.setValue(null);
         fechaPublicacion.setValue(null);
+        campoResumen.clear();
     }
 
     private void mensaje(String texto, Color color) {
         etiquetaMensaje.setTextFill(color);
         etiquetaMensaje.setText(texto);
     }
+
 }

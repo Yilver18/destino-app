@@ -39,6 +39,13 @@
             <Button text="Registrar" onAction="#onRegistrar" defaultButton="true"/>
             <Separator/>
             <Button text="Marcar seleccionada como ACTUAL" onAction="#onMarcarActual"/>
+            <Separator/>
+            <Label text="Resumen IA" style="-fx-font-weight: bold;"/>
+            <TextArea fx:id="campoResumen" promptText="Resumen generado por IA" prefRowCount="6" wrapText="true"/>
+            <HBox spacing="8">
+                <Button fx:id="btnGenerarResumen" text="Generar resumen IA" onAction="#onGenerarResumen"/>
+                <Button text="Guardar resumen" onAction="#onGuardarResumen"/>
+            </HBox>
             <Label fx:id="etiquetaMensaje" wrapText="true"/>
         </VBox>
     </right>
