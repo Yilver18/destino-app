@@ -56,4 +56,36 @@ public class EstadisticasDaoImpl implements EstadisticasDao {
         }
         return filas;
     }
+    @Override
+    public List<String[]> personasPorMes() {
+        String sql = "SELECT to_char(fecha_registro, 'YYYY-MM') AS mes, COUNT(*) AS total " +
+                "FROM persona GROUP BY mes ORDER BY mes";
+        List<String[]> filas = new ArrayList<>();
+        try (Connection con = Conexion.getInstancia().obtenerConexion();
+             PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                filas.add(new String[]{ rs.getString("mes"), String.valueOf(rs.getInt("total")) });
+            }
+        } catch (SQLException e) {
+            throw new AccesoDatosException("Error en personas por mes", e);
+        }
+        return filas;
+    }
+
+    @Override
+    public List<String[]> personasPorEstado() {
+        String sql = "SELECT estado, COUNT(*) AS total FROM persona GROUP BY estado ORDER BY estado";
+        List<String[]> filas = new ArrayList<>();
+        try (Connection con = Conexion.getInstancia().obtenerConexion();
+             PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                filas.add(new String[]{ rs.getString("estado"), String.valueOf(rs.getInt("total")) });
+            }
+        } catch (SQLException e) {
+            throw new AccesoDatosException("Error en personas por estado", e);
+        }
+        return filas;
+    }
 }

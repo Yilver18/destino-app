@@ -34,4 +34,25 @@ public class ReporteIaService {
         reporteIaDao.guardar("ASISTENCIA", reporte, generadoPor);
         return reporte;
     }
+    public String analizarCrecimiento(Long generadoPor) {
+        StringBuilder datos = new StringBuilder("Datos de crecimiento de la iglesia:\n\n");
+        datos.append("Personas registradas por mes:\n");
+        for (String[] r : estadisticasDao.personasPorMes()) {
+            datos.append("- ").append(r[0]).append(": ").append(r[1]).append(" personas\n");
+        }
+        datos.append("\nPersonas por estado:\n");
+        for (String[] r : estadisticasDao.personasPorEstado()) {
+            datos.append("- ").append(r[0]).append(": ").append(r[1]).append("\n");
+        }
+
+        String sistema = "Eres un analista que ayuda a un pastor a entender el crecimiento de su " +
+                "iglesia. Respondes en español, claro, breve y alentador pero realista.";
+        String prompt = "Interpreta estos datos de crecimiento y entrega un resumen para el pastor con: " +
+                "1) cómo viene el crecimiento, 2) qué dice el estado de las personas (nuevas vs activas), " +
+                "3) dos recomendaciones para consolidar y retener.\n\n" + datos;
+
+        String reporte = GroqApiClient.preguntar(sistema, prompt);
+        reporteIaDao.guardar("CRECIMIENTO", reporte, generadoPor);
+        return reporte;
+    }
 }

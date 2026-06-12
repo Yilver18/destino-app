@@ -66,6 +66,7 @@
                 <FlowPane hgap="8" vgap="8">
                     <Button fx:id="btnAsistente" text="Asistente bíblico" onAction="#onAsistente"/>
                     <Button fx:id="btnAnalisisAsistencia" text="Análisis de asistencia (IA)" onAction="#onAnalisisAsistencia"/>
+                    <Button fx:id="btnCrecimiento" text="Estadísticas de crecimiento (IA)" onAction="#onCrecimiento"/>
                 </FlowPane>
 
                 <Separator/>
