@@ -72,6 +72,10 @@
                     <Button fx:id="btnCrecimiento" text="Estadísticas de crecimiento (IA)" onAction="#onCrecimiento"/>
                     <Button fx:id="btnReporteAgape" text="Reportes de Agapé (IA)" onAction="#onReporteAgape"/>
                 </FlowPane>
+                <Label text="Comunicación" style="-fx-font-weight: bold;"/>
+                <FlowPane hgap="8" vgap="8">
+                    <Button fx:id="btnChat" text="Chat interno" onAction="#onChat"/>
+                </FlowPane>
 
                 <Separator/>
                 <Button text="Cerrar sesión" onAction="#onCerrarSesion"/>

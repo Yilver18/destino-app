@@ -38,6 +38,7 @@ public class PrincipalController {
     @FXML private Button btnCrecimiento;
     @FXML private Button btnReporteAgape;
     @FXML private Button btnDashboard;
+    @FXML private Button btnChat;
     // initialize() lo llama JavaFX automáticamente al cargar el FXML.
     @FXML
     public void initialize() {
@@ -104,6 +105,8 @@ public class PrincipalController {
         btnReporteAgape.setManaged(puedeGestionar);
         btnDashboard.setVisible(puedeGestionar);
         btnDashboard.setManaged(puedeGestionar);
+        btnChat.setVisible(puedeGestionar);
+        btnChat.setManaged(puedeGestionar);
     }
 
     @FXML
@@ -279,5 +282,11 @@ public class PrincipalController {
         Stage stage = (Stage) etiquetaBienvenida.getScene().getWindow();
         Navegador.cambiarEscena(stage, "/com/destino/app/view/dashboard.fxml",
                 "Destino App — Dashboard");
+    }
+    @FXML
+    private void onChat() {
+        Stage stage = (Stage) etiquetaBienvenida.getScene().getWindow();
+        Navegador.cambiarEscena(stage, "/com/destino/app/view/chat.fxml",
+                "Destino App — Chat interno");
     }
 }
